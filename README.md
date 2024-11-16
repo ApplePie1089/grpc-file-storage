@@ -19,5 +19,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone <URL вашего репозитория>
-   cd <папка проекта>
+
+   git clone https://github.com/ApplePie1089/grpc-file-storage.git
+   cd grpc-file-storage
+   docker-compose up --build
