@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package file_service;
+
+// Определение сервиса для работы с файлами
+service FileService {
+    // RPC метод для загрузки файла (streaming)
+    rpc UploadFile(stream FileUploadRequest) returns (FileUploadResponse);
+    
+    // RPC метод для скачивания файла (streaming)
+    rpc DownloadFile(FileDownloadRequest) returns (stream FileDownloadResponse);
+}
+
+// Сообщение для запроса загрузки файла
+message FileUploadRequest {
+    string file_name = 1;
+    bytes chunk_data = 2;  // Данные файла (частями)
+}
+
+// Сообщение для ответа на загрузку файла
+message FileUploadResponse {
+    string message = 1;
+}
+
+// Сообщение для запроса скачивания файла
+message FileDownloadRequest {
+    string file_name = 1;
+}
+
+// Сообщение для ответа при скачивании файла (частями)
+message FileDownloadResponse {
+    bytes chunk_data = 1;  // Данные файла (частями)
+}
